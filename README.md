@@ -33,6 +33,6 @@ _Para la realización de este proyecto, se utilizaron las siguientes herramienta
 _Práctica realizada por:_
 
 * **Juan Esteban Salas Flórez** - *Desarrollador* - [estebansalas18](https://github.com/estebansalas18)
-* **Cristian Alexander Castaño Montoya** - *Desarrollador* - [cristiancastano2581](https://github.com/cristiancastano2581)
+* **Cristian Alexander Castaño Montoya** - *Desarrollador* - [cristiancastano852](https://github.com/cristiancastano852)
 
 ---
