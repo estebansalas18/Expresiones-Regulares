@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Hashtable;
 import java.util.Set;
 import java.util.Stack;
+import javax.swing.JOptionPane;
 
 public class Arbol {
     String expresion;
@@ -87,18 +88,18 @@ public class Arbol {
             else if(simbolo == '(') pila.push(simbolo);
             else if(simbolo == ')'){
                 while(!pila.empty() && pila.peek() != '(') posfijo+=pila.pop();
-                if(!pila.empty() && pila.peek() != '(') System.out.println("Error: Expresion invalida");
+                if(!pila.empty() && pila.peek() != '(') JOptionPane.showMessageDialog(null, "Expresion invalida", "Error", JOptionPane.WARNING_MESSAGE);
                 else pila.pop();
             }else{
                 while(!pila.empty() && simb(simbolo) <= simb(pila.peek())){
-                    if(pila.peek() == '(') System.out.println("Error: Expresion invalida");
+                    if(pila.peek() == '(') JOptionPane.showMessageDialog(null, "Expresion invalida", "Error", JOptionPane.WARNING_MESSAGE);
                     posfijo+=pila.pop();
                 }
                 pila.push(simbolo);
             }
         }
         while(!pila.empty()){
-            if(pila.peek() == '(') System.out.println("Error: Expresion invalida");
+            if(pila.peek() == '(') JOptionPane.showMessageDialog(null, "Expresion invalida", "Error", JOptionPane.WARNING_MESSAGE);
             posfijo+=pila.pop();
         }
         return posfijo;
