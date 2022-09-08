@@ -5,7 +5,6 @@ import java.util.Hashtable;
 import java.util.Set;
 import java.util.Stack;
 import javax.swing.JOptionPane;
-
 public class Arbol {
     String expresion;
     Nodo raiz;
@@ -20,8 +19,62 @@ public class Arbol {
         this.pos = new Hashtable<>();
         this.indice = 0;
         this.iniciar_posicion();
+        this.verificar_expression();
     }
     
+
+    private void verificar_expression(){
+        for(int i = 0; i < this.expresion.length(); i++){
+            char c = this.expresion.charAt(i);
+            if(c == '*'){
+                if(i == 1){
+                    JOptionPane.showMessageDialog(null, "No puede comenzar con un *");
+                    return;
+                }
+                if(this.expresion.charAt(i + 1) == '*'){
+                    JOptionPane.showMessageDialog(null, "Error en la expresion regular, no pueden haber varios \""+c+"\" seguidos, tomaremos solo uno");
+                    return;
+                }
+            }
+            if(c == '+'){
+                if(i == 1){
+                    JOptionPane.showMessageDialog(null, "No puede comenzar con un +");
+                    return;
+                }
+                if(this.expresion.charAt(i + 1) == '+'){
+                    JOptionPane.showMessageDialog(null, "Error en la expresion regular, no pueden haber varios \""+c+"\" seguidos, tomaremos solo uno");
+                    return;
+                }
+            }
+            if(c == '.'){
+                if(i == 1){
+                    JOptionPane.showMessageDialog(null, "No puede comenzar con un .");
+                    return;
+                }
+                if(this.expresion.charAt(i + 1) == '.'){
+                JOptionPane.showMessageDialog(null, "Error en la expresion regular \n No pueden haber varios \""+c+"\" seguidos. \n Ingrese de nuevo la expresion");
+                    return;
+                }
+            }
+            if(c == '?'){
+                if(this.expresion.charAt(i + 1) == '?'){
+                    JOptionPane.showMessageDialog(null, "Error en la expresion regular, no pueden haber varios \""+c+"\" seguidos, tomaremos solo uno");
+                    return;
+                }
+            }
+            if(c == '|'){
+                if(i == 1){
+                    JOptionPane.showMessageDialog(null, "No puede comenzar con un |");
+                    return;
+                }
+                if(this.expresion.charAt(i + 1) == '|'){
+                    JOptionPane.showMessageDialog(null, "Error en la expresion regular, no pueden haber varios \""+c+"\" seguidos, tomaremos solo uno");
+                    return;
+                }
+            }
+        }
+        
+    }
     // Inicializacion de variables con respecto a la expresion
     private void iniciar_posicion(){
         for(int i = 0; i < expresion.length(); i++){
